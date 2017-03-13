@@ -1,5 +1,6 @@
 var mysql = require('mysql');
 var connection;
+
 /* EXAMPLE
 connectToDatabase('localhost', 'root', '123456', 'my_db');
 query("SELECT * FROM users", function(err, rows){
@@ -7,6 +8,7 @@ query("SELECT * FROM users", function(err, rows){
 		for(var i in rows){
 			console.log(rows[i].username + " " + rows[i].password + " " + rows[i].email);
 		}});
+disconnect();
 */
 
 function connectToDatabase(host, user, pass, db){
@@ -22,4 +24,8 @@ function connectToDatabase(host, user, pass, db){
 
 function query(query, func){ 
 	connection.query(query, func);
+}
+
+function disconnect(){
+	connection.end();
 }
